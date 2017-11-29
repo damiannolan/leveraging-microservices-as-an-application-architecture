@@ -1,0 +1,81 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+% Title ---------------------------------------------
+\title{Microservices \\ As an Application Architecture}
+
+
+\author{ Damian Nolan }
+
+% make the title area
+\maketitle
+
+% Abstract ------------------------------------------
+\begin{abstract}
+Microservice Architecture is an approach in software engineering and design that aims to divide an application into small constituents that are highly cohesive and loosely coupled. The following paper is intended to give a relatively high level overview and exploration into the world of Microservices that can be useful for both experts and novices alike. Microservice Architecture is continuously evolving and gaining traction throughout the world of software design - Throughout this paper we will introduce Microservice Architecture as a concept, compare and contrast Microservices with traditional Monolithic Architecture and review Docker, as a containerization platform for building Microservice applications.
+\end{abstract}
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{T}{he} demo file is intended to serve as a ``starter file''
+for IEEE journal papers produced under \LaTeX\ using
+IEEEtran.cls version 1.8a and later.
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+
+Microserverices blah blah blah \cite{MicroservicesResourceGuide}
+Text set in 3 columns.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. \textcite{MicroservicesResourceGuide} It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. \cite{GOTOConference}
+I wish you the best of success.
+
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specim\cite{BuildingMicroServices}
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry\cite{MicroservicesYesterdayTodayTomorrow}. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+% \hfill mds
+ 
+% \hfill September 17, 2014
+
+\subsection{Subsection Heading Here}
+Subsection text here.
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+\subsubsection{Subsubsection Heading Here}
+Subsubsection text here.
+
+
+% Conclusion ------------------------------
+\section{Conclusion}
+The conclusion goes here.
+
+% trigger a \newpage just before the given reference
+
+% References ------------------------------
+\newpage
+\printbibliography
+
+% that's all folks
+\end{document}
