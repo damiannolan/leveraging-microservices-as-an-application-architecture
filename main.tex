@@ -9,7 +9,7 @@
 
 \begin{document}
 % Title ---------------------------------------------
-\title{Microservices \\ As an Application Architecture}
+\title{Leveraging Microservices as an \\ Application Architecture}
 
 
 \author{ Damian Nolan }
@@ -19,44 +19,23 @@
 
 % Abstract ------------------------------------------
 \begin{abstract}
-Microservice Architecture is an approach in software engineering and design that aims to divide an application into small constituents that are highly cohesive and loosely coupled. The following paper is intended to give an overview and exploration into the architectural style. Microservice Architecture has gained extensive exposure in the last number of years - Throughout this paper we will introduce Microservice Architecture as a concept, discuss Microservices as a subset of Service Orientated Architecture (SOA), compare and contrast Microservices with traditional Monolithic Architecture and review Docker, as a containerization platform for building Microservice applications.
+Microservice Architecture is an approach in software engineering and design that aims to divide an application into small constituents that are highly cohesive and loosely coupled. The following paper is intended to give an overview and exploration into the architectural style. Microservice Architecture has gained extensive exposure in the last number of years - Throughout this paper we will introduce Microservice Architecture as a concept, discuss Microservices as a subset of Service Orientated Architecture (SOA), compare and contrast Microservices with traditional Monolithic Architecture and review Docker as a containerisation platform for building Microservice applications.
 \end{abstract}
 
 \section{Introduction}
-% The very first letter is a 2 line initial drop letter followed
-% by the rest of the first word in caps.
-% 
-% form to use if the first word consists of a single letter:
-% \IEEEPARstart{A}{demo} file is ....
-% 
-% form to use if you need the single drop letter followed by
-% normal text (unknown if ever used by IEEE):
-% \IEEEPARstart{A}{}demo file is ....
-% 
-% Some journals put the first two words in caps:
-% \IEEEPARstart{T}{his demo} file is ....
-% 
-% Here we have the typical use of a "T" for an initial drop letter
-% and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{he} term "Microservice" does not hold a true or set definition. It was merely a term introduced by a number of software architects at a workshop near Venice in May, 2011 to give a context to a number of reoccurring design principles and patterns that seemed to be emerging more frequently.
-	Just under a year later, James Lewis presented at 33rd Degree in Krakow where he spoke about building systems composed of systems and focusing on the Unix philosophy of small and simple. \cite{JamesLewis33rdDegree} 
-And so, with the introduction of a hot new buzzword on the scene, "Microservices" began to get more and more attention. 
 
-Martin Fowler describes the Microservice Architectural style as a approach to developing a single application as a suite of independently deployable services each running in its own process. \cite{MicroservicesResourceGuide} Each service should be independent in its our right and provide functionality based around a single responsibility. Services should be loosely coupled, provide high cohesion and adhere to the single responsibility principle. All of a sudden we can see that many of the traits we mentioned are key concepts in Object Orientated Programming. This is common in design principles of Service Orientated Architecture. Stubbings and Polovina \cite{StubbingsPolovina} explore and contrast the how Object Orientated expertise can be leveraged in the design of Service Orientated Architecture (SOA).
+\IEEEPARstart{T}{he} term "Microservice" does not hold a true or set definition it is merely a term introduced by a number of software architects at a workshop near Venice in May, 2011 to provide context to a number of reoccurring design principles and patterns that seemed to be emerging more frequently.
+	Just under a year later, James Lewis presented at 33rd Degree, conference for Java Masters in Krakow where he spoke about building systems composed of systems and focusing on the Unix philosophy of minimalist and modular. \cite{JamesLewis33rdDegree} 
+This gave rise to the hot new term "Microservices" and began to get more and more attention. 
+
+Martin Fowler describes the Microservice Architectural style as a approach to developing a single application as a suite of independently deployable services each running in its own process \cite{MicroservicesResourceGuide}. Each service should be independent in its our right and provide functionality based around a single responsibility. Services should be loosely coupled, provide high cohesion and adhere to the single responsibility principle. All of a sudden we can see that many of the traits we mentioned are key concepts in Object Orientated Programming which are also common in the design principles of Service Orientated Architecture. Stubbings and Polovina \cite{StubbingsPolovina} explore and contrast the how Object Orientated expertise can be leveraged in the design of Service Orientated Architecture (SOA).
 % Finish introduction / polish it off.
-
-
-% Talk about martin fowler definition
-% Talk about SOA vs Microservices - netflix
-% Characteristics of MSA
-% Monolith vs MSA
-% Docker
 
 \section{Are Microservices just SOA?}
 
-This immediately sparks the debate - Is Microservice Architecture really just SOA? Upon the rise of the term "Microservices" into the community, many SOA architects and engineers were coming forward, saying "We've been doing this for years!". And as Martin Fowler mentions in his keynote\cite{GOTOConference}, Service Orientated Architecture is a very broad term. It encompasses a vast landscape of design concepts, principles, patterns and implementation standards. Fowler goes on to mention that in essence Microservices can be really be considered a subset of SOA.
+This immediately sparks the debate - Is Microservice Architecture really just SOA? Upon the rise of the term "Microservices" into the community, many SOA architects and engineers were coming forward, saying "We've been doing this for years!". And as Martin Fowler mentions in his keynote\cite{GOTOConference} -  "Service Orientated Architecture is a very broad term". It encompasses a vast landscape of design concepts, principles, patterns and implementation standards. And it is often considered controlled by vendors who release commercial solutions Fowler goes on to mention that in essence Microservices can be really be considered a subset of SOA.
 
-Indeed, this is a popular and well defined statement as it is backed up by Adrian Cockcroft, the man responsible for pioneering the architectural style at Netflix as they moved towards cloud based and Microservice orientated design. He describes the architecture as "fine-grained SOA", in his keynote at Dockercon in 2014. \cite{adriancockcroft}
+Indeed, this is a popular and well defined statement and is backed up by Adrian Cockcroft, the man responsible for pioneering the architectural style at Netflix as they moved towards cloud based and Microservice orientated design. He describes the architecture as "fine-grained SOA", in his keynote at Dockercon in 2014 \cite{adriancockcroft}.
 
 Netflix are widely considered to be part of the pioneers of the Microservice Architectural style and have helped pave the way for it to flourish, introducing such libraries and tools as Hystrix\cite{Hystrix} and Chaos Monkey\cite{ChaosMonkey} for testing and strengthening systems.
 
@@ -64,32 +43,72 @@ Netflix are widely considered to be part of the pioneers of the Microservice Arc
 
 \section{Monolith vs MicroServices}
 
-Josh Evans of Netflix provides the analogy of the human body to describe the architectural style in his keynote. \cite{MasteringChaosNetflix} He describes Microservices as the organs which make up the human body and work together as one organism.
+Josh Evans of Netflix provides the analogy of the human body to describe the architectural style in his keynote \cite{MasteringChaosNetflix}. He describes Microservices as the organs which make up the human body and work together as one organism.
 Perhaps the best way to put Microservices into context is by comparing the differences in contrast to a traditional monolithic architecture. Martin Fowler uses a similar example in his Resource Guide to Microservices where he outlines a potential structure of a traditional enterprise application. \cite{MicroservicesResourceGuide} Take for example a simple application that exists in 3 tiers.
 
+% Subsection - Presentation Layer ----------------------
 \subsection{Presentation Layer}
 A Presentation Layer sits at the top of the application. This is the entry point of an application from a customer or user perspective, more commonly referred to as the front end. For example, this layer may consist of a web application composed of HTML, CSS and Javascript presenting a user interface to the client. 
 
+% Subsection - Logic Layer -----------------------------
 \subsection{Logic Layer}
-A Logic Layer lies behind the user interface and provides functionality to carry out business operations. This could be a wide variety of functionality and responsibilities could be anything from user accounts to instant messaging to calendar events. For this purpose, lets take a Java server application as the example. Requests may be issues over HTTP and handled accordingly by the server application.
+A Logic Layer lies behind the user interface and provides functionality to carry out business operations. This could be a wide variety of functionality and responsibilities could be anything from user accounts to instant messaging to calendar events. For this purpose, lets take a Java server application as the example. Requests may be issues over HTTP via REST\cite{Fielding:2000:ASD:932295} or RPC and handled accordingly by a number of object orientated classes to perform the requested operation.
 
+% Subsection - Data Layer ------------------------------
 \subsection{Data Layer}
-The Data Layer lives at base of the application stack. All of the raw data needed and in use by the other layers of the application exists here. A data store such as a relational database could be employed to persist and manage data in this layer.  
+The Data Layer lives at base of the application stack and is responsible for persistence of the raw application data. All of the data needed and in use by the application exists here. A data store such as a relational database could be employed to persist and manage data in this layer. The server application may employ a framework such as Hibernate\cite{JPAHibernate} JPA for object relational mapping in order to perform actions on data. 
 
-The monolith in this example is the server application. A monolith is a software application whose modules cannot be executed independently \cite{MicroservicesYesterdayTodayTomorrow}. In the case of the example defined above we may need to make improvements, changes or simple bug fixes to any one of the services we described. Changes made to the source code of the application imply - rebuild and redeploy. But what if the changes are small and confined to one service? There is an overhead associated with this as it becomes expensive to build a new release for production and this may only be affordable every couple of weeks. Continuous delivery and continuous deployment are considered hidden dividends of Microservices \cite{hiddendividends}. This allows developers to focus on developing and can speed up productivity across teams. 
+The monolith in this example is the server application. The services it provides run on a single process and are not independently deployable. A monolith is a software application whose modules cannot be executed independently \cite{MicroservicesYesterdayTodayTomorrow}. In the case of the example defined above we may need to make improvements, changes or simple bug fixes to any one of the services we described. Changes made to the source code of the application imply - rebuild and redeploy. But what if the changes are small and confined to one service? There is an overhead associated with this as it becomes expensive to build a new release for production and this may only be affordable every couple of weeks. Continuous integration and continuous deployment are considered hidden dividends of Microservices \cite{hiddendividends}. Although not exclusive to the world of Microservices they may in theory be more easily orchestrated as each service has a single responsibility, however require careful orchestration. This allows developers to focus on developing and can speed up productivity across teams. 
 
+% Microservice Characteristics -------------------------
+% Independent deployment
+% Bounded Context - Business Orientated Capabilities
+% Communication
+% API Gateways & Service Discovery - https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/
 \section{Microservices Characteristics}
+
+To migrate the example above to a Microservice based architecture the functionality described for handling user accounts, instant messaging and calendar events would be refactored into individual services that are independently deployable and each run in an isolated process. This provides a more loosely coupled and highly cohesive design, adhering more so to the single responsibility principle mentioned previously.
+
+% Communication
+\subsection*{ 1. Communication }
+In a cloud or distributed environment service interactions with one another can be carried out via IPC (inter-process communication) or protocols such as HTTP are commonly applied. Many Microservices communicating together in a chain through HTTP may suggest a certain amount of latency being involved, depending on what operations are being carried out. To combat situations like this, Google introduced gRPC\cite{gRPC}. gRPC is as open source RPC framework that employs Protocol buffers\cite{ProtocolBuffers} as a method of serializing structured data. It is highly efficient and is designed to target speed and performance. Binary data is sent through the wire at high speeds, alongside rapid serialisation/deserialization \cite{gRPCHackernoon}.
+
+In order to provide communication via services or processes it is standard to use light-weight mechanisms \cite{MicroservicesYesterdayTodayTomorrow}. This also lends itself to the idea of smart endpoints and dumb pipes\cite{MicroservicesResourceGuide}. The services themselves become the endpoints where business logic lives and pipes refer to the mechanisms used for them to communicate which are kept simple.
+
+% Microservice Characteristics -------------------------
+\section{Microservices Characteristics}
+
+Microservices may not hold a definition set in stone however, it is clear that there is a number of definitive common characteristics that can be used to identify with architectural style.
+
+
 
 Characteristics go here. - cite Building Microservices - Sam Newmann
 So how does one define a single Microservice? Or the architectural style as a whole? 
 
+% Containerisation with Docker--------------------------
+
+% Put a bit on Docker Swarm and Kuberneats for container orchestration, big piece of the end game for dominance in the infrastructure as a service (e.g. AWS, Google, Microsoft)
+\section{Containerisation with Docker}
+
+Docker stuff goes here.\cite{docker}
+
 % Conclusion -------------------------------------------
 \section{Conclusion}
+
+% Definitely include a spiel about them not being a silver bullet and that it is often considered risky to begin with a microservice architecture and much easier to start from a monolith and break it into microservices. 
+
+https://www.nginx.com/blog/refactoring-a-monolith-into-microservices/
+
+Npm’s story
+
+https://www.oreilly.com/ideas/how-npm-split-a-monolith-and-lived-to-tell-the-tale
 The conclusion goes here.
+
+cite - No silver bullet - Sam Newmann
 
 % References -------------------------------------------
 % trigger a \newpage just before the given reference
-\newpage
+% \newpage
 \printbibliography
 
 % that's all folks
