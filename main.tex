@@ -1,5 +1,5 @@
 \documentclass[journal]{IEEEtran}
-
+\usepackage{minted}
 \usepackage[sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
 
@@ -96,12 +96,64 @@ In order to provide communication via services or processes it is standard to us
 \subsection*{ 4. Decentralisation }
 Decentralisation of services infers a substantial amount of additional complexities within an application ecosystem. How does a client know what service it needs to contact in a cloud or distributed network? API Gateways\cite{APIGateways} and Service Discovery\cite{ServiceDiscovery} are two critical concepts in Microservice Architecture. An API Gateway uses a Facade pattern\cite{Gamma:1995:DPE:186897} from object orientated design to encapsulate how requests are made to a number a services. This minimises code complexity on the client side and eliminates direct calls to services made by the client. The API Gateway is used in conjunction with a Service Discovery pattern. This may be either client side or server side. Service Discovery employs the use of a service registry, a database of network locations of available service instances\cite{ServiceDiscovery}.
 
-% Containerisation with Docker--------------------------
+% Containerisation with Docker-------------------------- 
 
 % Put a bit on Docker Swarm and Kuberneats for container orchestration, big piece of the end game for dominance in the infrastructure as a service (e.g. AWS, Google, Microsoft)
 \section{Containerisation with Docker}
+Docker \cite{Docker} is a containisation platform that utilises the host operating system using lightweight images at the application layer to build and ship applications effectively and quickly. Containers can be considered as instances of images  running in isolated processes. They are often compared to virtual machines however they are more lightweight and can share the host OS kernal with many other containers. Virtual machines often take a couple of minutes to start whereas containers launch in a number of seconds. Container images are substantially smaller than virtual machines and are typically tens of MBs in size \cite{Docker}. In the last number of years Docker has become an industry leader in the world of Microservice Architecture. Sinnott and Korzhirbayev carried out a comparison of container-based technologies for the cloud\cite{KOZHIRBAYEV2017175} where they analyse Docker and evaluate pros and cons of container-based technologies based on in depth research of a number of performance metrics such as CPU, Disk I/O and Network I/O performance.
 
-Docker stuff goes here.
+Containers are built with Docker using Dockerfiles\cite{dockerfile}. A Dockerfile is a declarative file in which instructions for images containing applications or services are defined. For example, a basic Dockerfile may include:
+
+\begin{itemize}
+\item
+A base image
+
+\item
+Installation of Dependencies
+
+\item
+Adding of source code
+
+\item
+Exposing ports to the host OS
+
+\item
+Commands for starting an application
+\end{itemize}
+
+\subsection*{ Example Dockerfile }
+
+\begin{minted}{Dockerfile}
+# Base Image
+FROM node:alpine
+
+# Specify a working directory
+WORKDIR /app
+
+# Add package.json and install dependencies
+ADD package.json /app/package.json
+RUN npm install
+
+# Add application source code
+ADD . /app
+
+# Expose port 3000 on host machine
+EXPOSE 3000
+
+# Start the server
+CMD ["node", "server.js"]
+\end{minted}
+
+More detailed and complex configurations can also be defined such as environment variables and volumes. Volumes provide a way in which containers can persist data. Smart, Nguyen and Jaramillo provide excellent analysis of how Docker technology can be leveraged in Microservice Architecture \cite{LeveragingMicroservicesArchDocker}.
+
+% Docker compose
+\subsection*{ Docker Compose }
+Docker compose is a higher level abstraction from Dockerfiles. Multiple images can be defined using a docker compose file with their build context referencing the path of a Dockerfile for the service container. Similar to Dockerfiles a number of configuration settings can be defined here. John Zaccone provides an excellent example using Docker Compose in his keynote at Dockercon 2017, the source code of his demo application can be found on his Github \cite{dockercompose}.
+
+% Docker Swarm & Kubernetes container orchestration
+\subsection*{Container Orchestration}
+Container Orchestration refers to management of containerised software with regard to automation tools. Docker Swarm \cite{dockerswarm} is a feature provided by Docker for container orchestration in a cloud or distributed environment. The goal of Swarm is to supply a level of transparency for container management across a number of hosts.  
+In terms of Microservice Architecture, Docker Swarm could be considered to be in direct competition with Google's Kubernetes \cite{swarmkubernetes} and Amazon's AWS in the domination for Infrastructure as a Service (IaaS) and particularly container orchestration.
 
 % Conclusion -------------------------------------------
 \section{Conclusion}
