@@ -39,8 +39,6 @@ Indeed, this is a popular and well defined statement and is backed up by Adrian 
 
 Netflix are widely considered to be part of the pioneers of the Microservice Architectural style and have helped pave the way for it to flourish, introducing such libraries and tools as Hystrix\cite{Hystrix} and Chaos Monkey\cite{ChaosMonkey} for testing and strengthening systems.
 
-% From analysis its clear that Microservice Architecture lends itself to ideas taken from SOA and may indeed just be a subset of the latter. However, Microservices have gathered much 
-
 \section{Monolith vs MicroServices}
 
 Josh Evans of Netflix provides the analogy of the human body to describe the architectural style in his keynote \cite{MasteringChaosNetflix}. He describes Microservices as the organs which make up the human body and work together as one organism.
@@ -67,30 +65,43 @@ The monolith in this example is the server application. The services it provides
 % API Gateways & Service Discovery - https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/
 \section{Microservices Characteristics}
 
-To migrate the example above to a Microservice based architecture the functionality described for handling user accounts, instant messaging and calendar events would be refactored into individual services that are independently deployable and each run in an isolated process. This provides a more loosely coupled and highly cohesive design, adhering more so to the single responsibility principle mentioned previously.
+To migrate the example above to a Microservice based architecture the functionality described for handling user accounts, instant messaging and calendar events would be refactored into individual services that are independently deployable and each run in an isolated process. This provides a more loosely coupled and highly cohesive design, adhering more so to the single responsibility principle mentioned previously. However, that being said this does not mean it is an easy task to move from one architecture to another. Particularly in the case of Microservices there a wide range of aspects to be taken into consideration. Knoche writes of using modernization paths to predict performance impact on systems migrating from monolithic software applications towards microservices \cite{Knoche:2016:SRP:2851553.2892039}.
+Microservices may not hold a definition set in stone however, it is clear that there is a number of definitive common characteristics that can be used to identify with architectural style.
+
+% Independent Deployment
+\subsection*{ 1. Independent Deployment }
+Independent deployment is a key characteristic and indeed perhaps the most important principle of Microservice architecture. The idea of having the ability to deploy services as independent applications implies a number of benefits.
+
+\subsubsection*{Language Neutrality}
+A collection of Microservices operating together for the purpose of a single application do not have to be confined to one programming language. Sam Newmann uses the term - Technology Heterogeneity \cite{BuildingMicroServices}. A service can use the best tools for the job and there may be various services written in completely different languages using different technologies.
+
+\subsubsection*{Specialised Teams}
+Teams working on their respective services can become experts in the area and obtain a great understanding of how to carry out their jobs to the best of their ability. Having teams focus on their respective services may speed up productivity \cite{BuildingMicroServices}. Why be a jack of all trades and master of none?
+
+\subsubsection*{Appropriate Scaling}
+Independent Deployment lends itself to scaling in the right places. In terms of a traditional monolithic piece of software, the monolith may be replicated numerous times to achieve desired scaling. This infers the question - is every aspect of the system being used enough to justify increased scaling of the entire system. Independent deployment offers scaling of individual services where appropriate, the term horizontal scaling is used \cite{MasteringChaosNetflix}.
+
+% Bounded Context
+\subsection*{ 2. Bounded Context }
+
+The term "Bounded Context" is used when describing the characteristics of Microservice Architecture. This pattern is key in Domain Driven Design \cite{BoundedContext}. Bounded context in Microservices refers to organisation and creation of services based upon their business logic. A service should have a single responsibility and that responsibility should be entirely encapsulated within that service. This also lends itself to the idea of specialised teams as previously mentioned. Fowler speaks in his keynote about how Amazon divided themselves into teams responsible for a section of business logic all the way through to the end-user experience \cite{GOTOConference}. 
 
 % Communication
-\subsection*{ 1. Communication }
+\subsection*{ 3. Communication }
 In a cloud or distributed environment service interactions with one another can be carried out via IPC (inter-process communication) or protocols such as HTTP are commonly applied. Many Microservices communicating together in a chain through HTTP may suggest a certain amount of latency being involved, depending on what operations are being carried out. To combat situations like this, Google introduced gRPC\cite{gRPC}. gRPC is as open source RPC framework that employs Protocol buffers\cite{ProtocolBuffers} as a method of serializing structured data. It is highly efficient and is designed to target speed and performance. Binary data is sent through the wire at high speeds, alongside rapid serialisation/deserialization \cite{gRPCHackernoon}.
 
 In order to provide communication via services or processes it is standard to use light-weight mechanisms \cite{MicroservicesYesterdayTodayTomorrow}. This also lends itself to the idea of smart endpoints and dumb pipes\cite{MicroservicesResourceGuide}. The services themselves become the endpoints where business logic lives and pipes refer to the mechanisms used for them to communicate which are kept simple.
 
-% Microservice Characteristics -------------------------
-\section{Microservices Characteristics}
-
-Microservices may not hold a definition set in stone however, it is clear that there is a number of definitive common characteristics that can be used to identify with architectural style.
-
-
-
-Characteristics go here. - cite Building Microservices - Sam Newmann
-So how does one define a single Microservice? Or the architectural style as a whole? 
+% Decentralisation
+\subsection*{ 4. Decentralisation }
+Decentralisation of services infers a substantial amount of additional complexities within an application ecosystem. How does a client know what service it needs to contact in a cloud or distributed network? API Gateways\cite{APIGateways} and Service Discovery\cite{ServiceDiscovery} are two critical concepts in Microservice Architecture. An API Gateway uses a Facade pattern\cite{Gamma:1995:DPE:186897} from object orientated design to encapsulate how requests are made to a number a services. This minimises code complexity on the client side and eliminates direct calls to services made by the client. The API Gateway is used in conjunction with a Service Discovery pattern. This may be either client side or server side. Service Discovery employs the use of a service registry, a database of network locations of available service instances\cite{ServiceDiscovery}.
 
 % Containerisation with Docker--------------------------
 
 % Put a bit on Docker Swarm and Kuberneats for container orchestration, big piece of the end game for dominance in the infrastructure as a service (e.g. AWS, Google, Microsoft)
 \section{Containerisation with Docker}
 
-Docker stuff goes here.\cite{docker}
+Docker stuff goes here.
 
 % Conclusion -------------------------------------------
 \section{Conclusion}
