@@ -1,8 +1,8 @@
 # Leveraging Microservices as an Application Architecture
 
-A repository containing a literature review on Microservices entitled
+A repository containing a literature review on Microservices entitled:
 
-...Leveraging Microservices as an Application Architecture.
+**__Leveraging Microservices as an Application Architecture__**
 
 ## Compile source to PDF
 
